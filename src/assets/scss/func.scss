@@ -1,0 +1,3 @@
+@function test-width($n) {
+  @return $n * 10px - 1;
+}

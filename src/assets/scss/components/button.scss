@@ -1,75 +1,5 @@
-<template>
-  <button :class="[defaultCls, specCls, plainCls, disabledCls, roundCls, circleCls, sizeCls]" @click="handleClick" :disabled="disabled">
-    <slot></slot>
-  </button>
-</template>
-
-
-<script>
-export default {
-  name: 'UIButton',
-  props: {
-    type: {
-      type: String,
-      default: 'default'
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    plain: {
-      type: Boolean,
-      default: false
-    },
-    round: {
-      type: Boolean,
-      default: false
-    },
-    circle: {
-      type: Boolean,
-      default: false
-    },
-    size: {
-      type: String,
-      default: ''
-    }
-  },
-  data() {
-    return {
-      defaultCls: 'ui-button'
-    }
-  },
-  methods: {
-    handleClick() {
-      this.$emit('click')
-    }
-  },
-  computed: {
-    specCls() {
-      return 'ui-button--' + this.type
-    },
-    plainCls() {
-      return this.plain ? 'is-plain' : ''
-    },
-    disabledCls() {
-      return this.disabled ? 'is-disabled' : ''
-    },
-    roundCls() {
-      return this.round && !this.circle ? 'is-round' : ''
-    },
-    circleCls() {
-      return this.circle ? 'is-circle' : ''
-    },
-    sizeCls() {
-      return this.size ? 'ui-button--' + this.size : ''
-    }
-  }
-}
-</script>
-
-<style lang="scss" scoped>
-@import "../../assets/scss/variable.scss";
-@import "../../assets/scss/mixins.scss";
+@import './variable.scss';
+@import './mixins.scss';
 
 .ui-button {
   display: inline-block;
@@ -94,7 +24,7 @@ export default {
     @include btn--effect(#ecf5ff, #c6e2ff, #409eff);
   }
   &.active {
-    @include btn--effect("", #3a8ee6, #3a8ee6);
+    @include btn--effect('', #3a8ee6, #3a8ee6);
   }
   &.is-plain {
     &:hover,
@@ -257,4 +187,3 @@ export default {
     }
   }
 }
-</style>

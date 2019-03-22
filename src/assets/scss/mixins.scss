@@ -1,0 +1,47 @@
+/* ------ button start ------ */
+@mixin btn--effect($bgc, $borC, $c) {
+  background-color: $bgc;
+  border-color: $borC;
+  color: $c;
+}
+
+@mixin btn--effect__default($default, $hover, $active) {
+  @include btn--effect($default, $default, #fff);
+  &:hover,
+  &:focus {
+    @include btn--effect($hover, $hover, #fff);
+  }
+  &:active {
+    @include btn--effect($active, $active, #fff);
+  }
+}
+
+@mixin btn--effect__plain(
+  $bgc,
+  $borC,
+  $c,
+  $hoverBgc,
+  $hoverBorC,
+  $hoverC,
+  $activeBgc,
+  $activeBorC,
+  $activeC
+) {
+  @include btn--effect($bgc, $borC, $c);
+  &:hover,
+  &:focus {
+    @include btn--effect($hoverBgc, $hoverBorC, $hoverC);
+  }
+  &:active {
+    @include btn--effect($activeBgc, $activeBorC, $activeC);
+  }
+}
+
+@mixin btn--effect__disabled($bgc, $borC, $c) {
+  cursor: not-allowed;
+  background-image: none;
+  background-color: $bgc;
+  border-color: $borC;
+  color: $c;
+}
+/* ------ button end ------ */

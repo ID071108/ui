@@ -3,11 +3,8 @@
     <sidebar />
     <div class="content">
       <div class="content-header">
-        <ul class="userInfo">
-          <li>提醒</li>
-          <li>swan</li>
-        </ul>
-        <tabs />
+        <UserInfo />
+        <tabs :tabs="tabs" />
       </div>
       <div class="content-body">
         <div>
@@ -22,13 +19,25 @@
 </template>
 
 <script>
-import Sidebar from '@/components/Sidebar'
-import Tabs from '@/components/Tabs'
+import Sidebar from '@/views/home/Sidebar'
+import Tabs from '@/views/home/Tabs'
+import UserInfo from '@/views/home/User-info'
+import { mapState } from 'vuex'
 export default {
   name: 'app',
   components: {
     Sidebar,
-    Tabs
+    Tabs,
+    UserInfo
+  },
+  data() {
+    return {
+    }
+  },
+  computed: {
+    ...mapState({
+      tabs: state => state.tabs
+    })
   }
 }
 </script>
@@ -38,22 +47,6 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
-  .sidebar {
-    position: absolute;
-    width: 200px;
-    height: 100%;
-    box-shadow: 0 0 6px #000;
-    background-color: #2b2b2b;
-    li {
-      height: 30px;
-      line-height: 30px;
-      padding: 0 16px;
-      a {
-        text-decoration: none;
-        color: #fff;
-      }
-    }
-  }
   .content {
     display: flex;
     flex-direction: column;
@@ -62,20 +55,6 @@ export default {
     border: 1px solid transparent;
     &-header {
       width: 100%;
-      height: 60px;
-      & > .userInfo {
-        float: right;
-        height: 30px;
-        line-height: 30px;
-        li {
-          float: left;
-        }
-      }
-      & > .tabs {
-        clear: both;
-        height: 30px;
-        line-height: 30px;
-      }
     }
     &-body {
       display: flex;
@@ -83,6 +62,7 @@ export default {
       background-color: #f2f2f2;
       padding: 6px;
       & > div {
+        overflow-y: scroll;
         width: 100%;
         height: 100%;
         padding: 6px;
