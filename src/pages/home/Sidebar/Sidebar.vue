@@ -1,7 +1,8 @@
 <template>
   <div class="ui-sidebar">
     <div class="logo">
-      <img src="" alt="logo">
+      <img src="../../../assets/imgs/ui.png" alt="ui">
+      <span>swan</span>
     </div>
     <ul>
       <li class="" @click="handleClick({label: 'button', path: '/button-demo'})">
@@ -28,6 +29,18 @@
           <i class="iconfont icon-expand"></i>
         </router-link>
       </li>
+      <li class="">
+        <router-link to="/123456789" :class="$route.path === '/123456789' ? 'active' : ''">
+          <span>404</span>
+          <i class="iconfont icon-expand"></i>
+        </router-link>
+      </li>
+      <li class="">
+        <router-link to="/error/401" :class="$route.path === '/error/401' ? 'active' : ''">
+          <span>401</span>
+          <i class="iconfont icon-expand"></i>
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -38,6 +51,14 @@ import Menu from '@/config/menu.js'
 
 export default {
   name: 'Sidebar',
+  props: {
+    propF: {
+      type: Object,
+      validator: function (obj) {
+        return obj.name === 'sw'
+      }
+    }
+  },
   data() {
     return {
       menu: []
@@ -94,10 +115,18 @@ export default {
     }
   }
   .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 60px;
+    padding: 10px 0;
     text-align: center;
     & > img {
       height: 100%;
+    }
+    & > span {
+      padding: 0 10px;
+      color: #fff;
     }
   }
 }

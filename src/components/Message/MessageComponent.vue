@@ -37,8 +37,9 @@ export default {
   methods: {
     destroyElement() {
       this.clearTimer()
-      this.$el.removeEventListener('transitionend', this.destroyElement)
+      this.$el.removeEventListener('transitionend', () => { })
       this.$destroy(true)
+      console.log(this.$el)
       this.$el.parentNode.removeChild(this.$el)
     },
     startTimer() {

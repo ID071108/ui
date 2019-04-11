@@ -73,6 +73,9 @@ $col: (100%/24);
   border-radius: 4px;
 }
 .grid-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 36px;
 }
 [class*="ui-col-"] {

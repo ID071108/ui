@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <sidebar />
-    <div class="content">
-      <div class="content-header">
-        <UserInfo />
-        <tabs :tabs="tabs" />
-      </div>
-      <div class="content-body">
-        <div>
-          <router-view></router-view>
+    <template v-if="$route.meta.hasMaster">
+      <div class="wrap">
+        <sidebar />
+        <div class="content">
+          <div class="content-header">
+            <UserInfo />
+            <tabs :tabs="tabs" />
+          </div>
+          <div class="content-body">
+            <div>
+              <keep-alive>
+                <router-view></router-view>
+              </keep-alive>
+            </div>
+          </div>
+          <div class="content-footer">
+            copyright by swan
+          </div>
         </div>
       </div>
-      <div class="content-footer">
-        copyright by swan
+    </template>
+
+    <template v-else>
+      <div>
+        <router-view></router-view>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
-import Sidebar from '@/views/home/Sidebar'
-import Tabs from '@/views/home/Tabs'
-import UserInfo from '@/views/home/User-info'
+import Sidebar from '@/pages/home/Sidebar'
+import Tabs from '@/pages/home/Tabs'
+import UserInfo from '@/pages/home/User-info'
 import { mapState } from 'vuex'
+import { localStore, sessionStore } from './utils/storage'
 export default {
   name: 'app',
   components: {
@@ -33,6 +46,9 @@ export default {
   data() {
     return {
     }
+  },
+  created() {
+    localStore.set({ a: 1 })
   },
   computed: {
     ...mapState({
@@ -47,6 +63,10 @@ export default {
   position: relative;
   width: 100%;
   height: 100%;
+  .wrap {
+    width: 100%;
+    height: 100%;
+  }
   .content {
     display: flex;
     flex-direction: column;
@@ -62,7 +82,6 @@ export default {
       background-color: #f2f2f2;
       padding: 6px;
       & > div {
-        overflow-y: scroll;
         width: 100%;
         height: 100%;
         padding: 6px;

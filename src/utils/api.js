@@ -3,7 +3,11 @@ import axios from 'axios'
 import Apis from '@/config/apis'
 import Message from '@/components/Message'
 
-// 请求拦截
+/**
+ * 请求拦截
+ * @desc 处理请求错误信息
+ * */
+
 axios.interceptors.request.use(
   config => {
     return config
@@ -13,7 +17,11 @@ axios.interceptors.request.use(
   }
 )
 
-// 响应拦截
+/**
+ * 响应拦截
+ * @desc 处理响应消息
+ * */
+
 axios.interceptors.response.use(
   data => {
     Message.success('请求成功')
@@ -69,7 +77,12 @@ axios.interceptors.response.use(
   }
 )
 
-// post方法封装，参数处理
+/**
+ * post方法封装
+ * @param {key} required url对应的key值
+ * @param {params} option 请求参数
+ * */
+
 export const postRequest = (key, params) => {
   return axios({
     method: 'post',
@@ -94,7 +107,12 @@ export const postRequest = (key, params) => {
   })
 }
 
-// post方法封装 文件上传
+/**
+ * post方法封装 文件上传
+ * @param {key} required url对应的key值
+ * @param {params} option 请求参数
+ * */
+
 export const uploadFileRequest = (key, params) => {
   return axios({
     method: 'post',
@@ -106,14 +124,28 @@ export const uploadFileRequest = (key, params) => {
   })
 }
 
-// get方法封装
-export const getRequest = key => {
+/**
+ * get方法封装
+ * @param {key} required url对应的key值
+ * @param {params} option 请求参数
+ * */
+
+export const getRequest = (key, params) => {
+  let queryString = '?'
+  Object.keys(params).forEach(key => {
+    queryString += key + '&' + params[key]
+  })
   return axios({
     method: 'get',
-    url: Apis[key]
+    url: Apis[key] + queryString
   })
 }
 
+/**
+ * put方法封装
+ * @param {key} required url对应的key值
+ * @param {params} option 请求参数
+ * */
 export const putRequest = (key, params) => {
   return axios({
     method: 'put',

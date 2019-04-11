@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     handleClose(path) {
+      console.log(this.$store.state)
       this.$store.commit('closeTab', { path })
       if (this.$route.path === path) {
         this.$router.go(-1)
