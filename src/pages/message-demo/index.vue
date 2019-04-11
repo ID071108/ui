@@ -24,7 +24,7 @@ export default {
         message: '成功提示',
         duration: 0
       })
-      this.$post('getAreaTree', {}).then(res => console.log(res))
+      // this.$post('getAreaTree', {}).then(res => console.log(res))
     },
     handleInfo() {
       this.$message.info('信息提示')

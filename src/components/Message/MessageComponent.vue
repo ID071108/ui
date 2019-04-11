@@ -39,8 +39,7 @@ export default {
       this.clearTimer()
       this.$el.removeEventListener('transitionend', () => { })
       this.$destroy(true)
-      console.log(this.$el)
-      this.$el.parentNode.removeChild(this.$el)
+      this.$el.parentNode && this.$el.parentNode.removeChild(this.$el)
     },
     startTimer() {
       if (this.duration > 0) {

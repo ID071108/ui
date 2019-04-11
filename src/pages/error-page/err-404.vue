@@ -25,6 +25,7 @@ export default {
     padding: 0 30px;
     & > li {
       color: #00a53c;
+      text-shadow: 5px 5px 5px #ccc;
     }
     .num {
       font-size: 200px;
