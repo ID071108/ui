@@ -8,8 +8,8 @@
             <UserInfo />
             <tabs :tabs="tabs" />
           </div>
-          <div class="content-body">
-            <div>
+          <div class="content-body" ref="contentBody">
+            <div class="">
               <keep-alive>
                 <router-view></router-view>
               </keep-alive>
@@ -49,6 +49,26 @@ export default {
   },
   created() {
     localStore.set({ a: 1 })
+    let _this = this
+    // 监听浏览器刷新事件
+    window.addEventListener('load', () => {
+      _this.$router.push(this.$route.path)
+      _this.$store.commit('updateTabs', {
+        label: this.$route.meta.name,
+        path: this.$route.path
+      })
+    })
+    window.addEventListener('resize', _.debounce(function () {
+      let scrollHeight = document.documentElement.scrollHeight
+      let clientHeight = document.documentElement.clientHeight
+      let contentBodyElem = document.querySelector('.content-body')
+      console.log(clientHeight, scrollHeight)
+      if (clientHeight < scrollHeight) {
+        contentBodyElem.style.overflowY = 'hidden'
+      } else {
+        contentBodyElem.style.overflowY = 'scroll'
+      }
+    }, 300))
   },
   computed: {
     ...mapState({

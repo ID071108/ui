@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from '@/pages/home'
-import ButtonDemo from '@/pages/button-demo'
+import ButtonDemo from '@/pages/sw-button'
 import MessageDemo from '@/pages/message-demo'
 import LayoutDemo from '@/pages/layout-demo'
 import MenuDemo from '@/pages/menu-demo'
@@ -76,6 +76,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  console.log(to, from, next)
   next()
 })
 router.afterEach((to, from) => {})

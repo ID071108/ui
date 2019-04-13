@@ -5,16 +5,19 @@ import store from '@/store'
 import SwanUI from '@/components'
 import Mock from './mock/index'
 import './utils/api'
+import './utils/directives'
+import './utils/filters'
 import './components'
 import './assets/style/reset.css'
 import './assets/style/common.css'
 import './assets/style/iconfont.css'
 import './assets/scss/common.scss'
 
+var _ = require('lodash')
+
 Mock.mockData()
 
 Vue.config.productionTip = false
-
 const app = new Vue({
   router,
   store,

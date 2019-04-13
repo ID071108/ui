@@ -1,19 +1,15 @@
 <template>
   <div class="message-demo">
-    <Button type="success" @click="handleSuccess">成功提示</button>
-    <Button type="info" @click="handleInfo">信息提示</button>
-    <Button type="warning" @click="handleWarning">警告提示</button>
-    <Button type="danger" @click="handleError">错误提示</button>
+    <sw-button type="success" @click="handleSuccess">成功提示</sw-button>
+    <sw-button type="info" @click="handleInfo">信息提示</sw-button>
+    <sw-button type="warning" @click="handleWarning">警告提示</sw-button>
+    <sw-button type="danger" @click="handleError">错误提示</sw-button>
   </div>
 </template>
 
 <script>
-import Button from '@/components/Button'
 export default {
   name: 'message-demo',
-  components: {
-    Button
-  },
   data() {
     return {
     }

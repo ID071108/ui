@@ -10,10 +10,17 @@
     <header>
       <div></div>
     </header>
+    <input type="text" v-focus />
+    <sw-button-group>
+      <sw-button>sw-button</sw-button>
+      <sw-button>sw-button</sw-button>
+      <sw-button>sw-button</sw-button>
+    </sw-button-group>
   </div>
 </template>
 
 <script>
+
 import apis from '@/config'
 export default {
   name: 'Home',

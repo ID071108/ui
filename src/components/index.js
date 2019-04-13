@@ -1,20 +1,9 @@
 import Vue from 'vue'
-import Button from './Button'
-import Message from './Message'
+import { SwButton, SwButtonGroup } from './Button'
 
-const components = [Button, Message]
+Vue.use(SwButton)
+Vue.use(SwButtonGroup)
 
-const install = function(Vue, opts = {}) {
-  components.forEach(component => {
-    Vue.component(component.name, component)
-  })
+// Vue.prototype.$message = SwMessage
 
-  Vue.prototype.$message = Message
-}
-
-if (typeof window !== 'undefined' && window.Vue) install(window.Vue)
-
-module.export = {
-  Button,
-  Message
-}
+// export default SwButton
