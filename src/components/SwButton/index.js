@@ -1,5 +1,5 @@
-import Button from './Button'
-import ButtonGroup from './Button-group'
+import Button from './SwButton'
+import ButtonGroup from './SwButtonGroup'
 
 export const SwButton = {
   install: function(Vue) {

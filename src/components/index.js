@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import { SwButton, SwButtonGroup } from './Button'
+import { SwButton, SwButtonGroup } from './SwButton'
 
 Vue.use(SwButton)
 Vue.use(SwButtonGroup)

@@ -278,7 +278,7 @@
 <script>
 
 export default {
-  name: 'demo-sw-button',
+  name: 'button-demo',
   components: {
   },
   methods: {

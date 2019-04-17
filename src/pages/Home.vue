@@ -25,7 +25,19 @@ import apis from '@/config'
 export default {
   name: 'Home',
   created() {
-  }
+  },
+  // beforeRouteEnter(to, from, next) {
+  //   console.log('e', to, from, next)
+  //   next()
+  // },
+  // beforeRouteUpdate(to, from, next) {
+  //   console.log('u', to, from, next)
+  //   next()
+  // },
+  // beforeRouteLeave(to, from, next) {
+  //   console.log('l', to, from, next)
+  //   next()
+  // }
 }
 </script>
 

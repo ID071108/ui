@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     handleClose(path) {
-      console.log(this.$store.state)
       this.$store.commit('closeTab', { path })
       if (this.$route.path === path) {
         this.$router.go(-1)
@@ -34,9 +33,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../../assets/scss/variable.scss";
+@import "../../assets/scss/variable.scss";
 .ui-tabs {
+  overflow: hidden;
+  height: 40px;
   padding: 0 16px;
+  word-wrap: none;
   li {
     position: relative;
     display: inline-block;

@@ -63,7 +63,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 export default {
   components: {}
   props: {}
-  data: function() {return {}}
+  data: function() {return {}},
   created() {},
   mounted(){},
   activited(){},

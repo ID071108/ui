@@ -3,11 +3,11 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-import Home from '@/pages/home'
-import ButtonDemo from '@/pages/sw-button'
-import MessageDemo from '@/pages/message-demo'
-import LayoutDemo from '@/pages/layout-demo'
-import MenuDemo from '@/pages/menu-demo'
+import Home from '@/pages/Home.vue'
+import ButtonDemo from '@/pages/demo/button-demo'
+import MessageDemo from '@/pages/demo/message-demo'
+import LayoutDemo from '@/pages/demo/layout-demo'
+import MenuDemo from '@/pages/demo/menu-demo'
 import UnAuthorization from '@/pages/error-page/err-401'
 import NotFound from '@/pages/error-page/err-404'
 
@@ -72,13 +72,22 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 router.beforeEach((to, from, next) => {
-  console.log(to, from, next)
   next()
+  // console.log('before')
 })
-router.afterEach((to, from) => {})
+router.afterEach((to, from) => {
+  // console.log('after')
+})
 
 export default router

@@ -1,7 +1,7 @@
 <template>
   <div class="ui-sidebar">
     <div class="logo">
-      <img src="../../../assets/imgs/ui.png" alt="ui">
+      <img src="../../assets/imgs/ui.png" alt="ui">
       <span>swan</span>
     </div>
     <ul>

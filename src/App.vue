@@ -30,10 +30,10 @@
   </div>
 </template>
 
-<script>
-import Sidebar from '@/pages/home/Sidebar'
-import Tabs from '@/pages/home/Tabs'
-import UserInfo from '@/pages/home/User-info'
+<script>  
+import Sidebar from '@/pages/app/sidebar'
+import Tabs from '@/pages/app/tabs'
+import UserInfo from '@/pages/app/user-info'
 import { mapState } from 'vuex'
 import { localStore, sessionStore } from './utils/storage'
 export default {
@@ -58,17 +58,22 @@ export default {
         path: this.$route.path
       })
     })
-    window.addEventListener('resize', _.debounce(function () {
+    window.addEventListener('resize', _.debounce(this.setScrollY, 300))
+  },
+  mounted() {
+    this.setScrollY()
+  },
+  methods: {
+    setScrollY() {
       let scrollHeight = document.documentElement.scrollHeight
       let clientHeight = document.documentElement.clientHeight
-      let contentBodyElem = document.querySelector('.content-body')
-      console.log(clientHeight, scrollHeight)
-      if (clientHeight < scrollHeight) {
-        contentBodyElem.style.overflowY = 'hidden'
+      let contentBodyElem = document.querySelector('.content-body > div')
+      if (clientHeight >= scrollHeight) {
+        contentBodyElem.style.overflowY = 'auto'
       } else {
         contentBodyElem.style.overflowY = 'scroll'
       }
-    }, 300))
+    }
   },
   computed: {
     ...mapState({
