@@ -13,7 +13,7 @@ import './assets/style/common.css'
 import './assets/style/iconfont.css'
 import './assets/scss/common.scss'
 
-var _ = require('lodash')
+const _lodash = require('lodash')
 
 Mock.mockData()
 

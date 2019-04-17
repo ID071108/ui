@@ -58,7 +58,7 @@ export default {
         path: this.$route.path
       })
     })
-    window.addEventListener('resize', _.debounce(this.setScrollY, 300))
+    window.addEventListener('resize', _lodash.debounce(this.setScrollY, 300))
   },
   mounted() {
     this.setScrollY()
